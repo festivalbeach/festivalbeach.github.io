@@ -33,16 +33,16 @@ class App extends Component {
       return (<p>Loading...</p>);
     }
     else
-      console.log(this.state.plantInfo['Peach']);
       return (
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
 
             {Object.keys(this.state.plantInfo).map((key, value) => (
-              <p>{key} {this.state.plantInfo[key]['Family']}</p>
+              <p>Name:{key}    Family:{this.state.plantInfo[key]['Family']}</p>
             ))}
             {this.state.plantInfo['Peach']['Label']}
+
             <a
               className="App-link"
               href="https://reactjs.org"
