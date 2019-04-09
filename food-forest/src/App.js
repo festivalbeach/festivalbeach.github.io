@@ -13,7 +13,10 @@ class App extends Component {
     }
   }
 
-  // Loads plant info on initialization into a map of name to object
+  /* Loads plant information and coordinates from a google spreadsheet.
+   * plantInfo is stored as a map of name to information
+   * plantCoords is stored as a list of {name, x, y} objects
+   */
   componentDidMount() {
     Tabletop.init({
       key: '1ecF8O2AxaI3DDI8A-o3B7zvzAeYYNU9HDvsshXAAmwc',
@@ -43,7 +46,7 @@ class App extends Component {
               <p>Name:&nbsp;{key}&nbsp;&nbsp;&nbsp;Family:&nbsp;{this.state.plantInfo[key]['Family']}</p>
             ))}
             {this.state.plantInfo['Peach']['Label']}
-            
+
             <a
               className="App-link"
               href="https://reactjs.org"
