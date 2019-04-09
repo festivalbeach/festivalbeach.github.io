@@ -8,7 +8,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      plantInfo: {}
+      plantInfo: {},
+      plantCoords: []
     }
   }
 
@@ -16,15 +17,15 @@ class App extends Component {
   componentDidMount() {
     Tabletop.init({
       key: '1ecF8O2AxaI3DDI8A-o3B7zvzAeYYNU9HDvsshXAAmwc',
-      callback: data => {
+      callback: (junk, tabletop) => {
         let info = {};
-        data.forEach(dat => {
+        let coords = tabletop.sheets('Plant_Coordinates').all()
+        tabletop.sheets('Plant_Details').all().forEach(dat => {
           info[dat['Label']] = dat;
         });
-        this.setState({plantInfo: info});
-      },
-      simpleSheet: true
-    })
+        this.setState({plantInfo: info, plantCoords: coords});
+      }
+    });
   }
 
 
@@ -39,10 +40,10 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
 
             {Object.keys(this.state.plantInfo).map((key, value) => (
-              <p>Name:{key}    Family:{this.state.plantInfo[key]['Family']}</p>
+              <p>Name:&nbsp;{key}&nbsp;&nbsp;&nbsp;Family:&nbsp;{this.state.plantInfo[key]['Family']}</p>
             ))}
             {this.state.plantInfo['Peach']['Label']}
-
+            
             <a
               className="App-link"
               href="https://reactjs.org"
