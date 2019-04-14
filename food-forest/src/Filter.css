@@ -1,0 +1,59 @@
+.Filter {
+    text-align: center;
+  }
+  
+  
+  .Filter-header {
+    background-color: white;
+    /*min-height: 100vh;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(4px + 2vmin);
+    color: gray;
+  }
+  
+  .Filter-link {
+    color: #61dafb;
+  }
+  .modal-filter {
+    font-size: 12px;
+  }
+  .modal-filter > .header {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+    color: black
+  }
+  .modal-filter > .content {
+    width: 100%;
+    padding: 10px 5px;
+    color: black
+  
+  }
+  .modal-filter > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+    color: black
+  }
+  .modal-filter > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+    color: black
+  }
+  
+  

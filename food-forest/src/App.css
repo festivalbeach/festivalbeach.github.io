@@ -22,10 +22,10 @@
 .App-link {
   color: #61dafb;
 }
-.modal {
+.modal-app {
   font-size: 12px;
 }
-.modal > .header {
+.modal-app > .header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
@@ -33,20 +33,20 @@
   padding: 5px;
   color: black
 }
-.modal > .content {
+.modal-app > .content {
   width: 100%;
   padding: 10px 5px;
   color: black
 
 }
-.modal > .actions {
+.modal-app > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
   color: black
 }
-.modal > .close {
+.modal-app > .close {
   cursor: pointer;
   position: absolute;
   display: block;
