@@ -49,11 +49,13 @@ class App extends Component {
           <Navbar />
           <header className="App-header">
                         
-            <PlantInfo buttonLabel={'Peach'} plantInfoProp={plantInfo['Peach']}/>
+            {/* <PlantInfo buttonLabel={'Peach'} plantInfoProp={plantInfo['Peach']}/>
             <PlantInfo buttonLabel={'Plum'} plantInfoProp={plantInfo['Plum']}/>
             <PlantInfo buttonLabel={'Mexican Plum'} plantInfoProp={plantInfo['Mexican Plum']}/>
             <PlantInfo buttonLabel={'Pecan'} plantInfoProp={plantInfo['Pecan']}/>
-            <PlantInfo buttonLabel={'Arroyo Sweetwood'} plantInfoProp={plantInfo['Arroyo Sweetwood']}/>
+            <PlantInfo buttonLabel={'Arroyo Sweetwood'} plantInfoProp={plantInfo['Arroyo Sweetwood']}/> */}
+
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ZE6mH1R7meTQmxKD4ikArTQRhWvG4Ger" width="640" height="480"></iframe>
 
             {/* {Object.keys(this.state.plantInfo).map((key, value) => (
               <p>Name:&nbsp;{key}&nbsp;&nbsp;&nbsp;Family:&nbsp;{this.state.plantInfo[key]['Family']}</p>
