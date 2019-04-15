@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar.js'
 import PlantInfo from './PlantInfo.js'
-import Marker from './Marker.js'
 import Tabletop from 'tabletop';
 import GoogleMapReact from 'google-map-react';
 import Popup from "reactjs-popup";
@@ -54,8 +53,8 @@ class App extends Component {
       return (<p>Loading...</p>);
     }
     else
-
       var plantInfo = this.state.plantInfo;
+      var plantCoords = this.state.plantCoords;
 
       return (
         <div className="App">
@@ -67,7 +66,6 @@ class App extends Component {
             <PlantInfo buttonLabel={'Mexican Plum'} plantInfoProp={plantInfo['Mexican Plum']}/>
             <PlantInfo buttonLabel={'Pecan'} plantInfoProp={plantInfo['Pecan']}/>
             <PlantInfo buttonLabel={'Arroyo Sweetwood'} plantInfoProp={plantInfo['Arroyo Sweetwood']}/> */}
-
             <div id="map" style={{width: '100%', height: '90vh'}}>
               <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
@@ -75,27 +73,19 @@ class App extends Component {
                 defaultZoom={this.props.zoom}
                 yesIWantToUseGoogleMapApiInternals
               >
-                {Object.keys(plantInfo).map((key, value) =>{
-                  var point = plantInfo[key];
+                {Object.keys(plantCoords).map((key, value) =>{
+                  var point = plantCoords[key];
                   if (point['Latitude']) {
-                    return <Marker
-                      key={key}
-                      text={plantInfo[key]['Label']}
-                      lat={plantInfo[key]['Latitude']}
-                      lng={plantInfo[key]['Longitude']}
+                    return <PlantInfo
+                      plant={point['Name']}
+                      lat={point['Latitude']}
+                      lng={point['Longitude']}
+                      plantInfoProp={plantInfo[point['Name']]}
                     />
                   }
                 })}
               </GoogleMapReact>
             </div>
-
-            {/* {Object.keys(this.state.plantInfo).map((key, value) => (
-              <p>Name:&nbsp;{key}&nbsp;&nbsp;&nbsp;Family:&nbsp;{this.state.plantInfo[key]['Family']}</p>
-            ))}
-
-            {plantInfo['Peach']['Label']}
-            {plantInfo['Peach']['Family']} */}
-
           </header>
         </div>
       );

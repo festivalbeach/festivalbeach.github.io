@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import styled from 'styled-components';
 
 class PlantInfo extends React.Component {
   constructor(props) {
@@ -16,14 +17,31 @@ class PlantInfo extends React.Component {
       modal: !prevState.modal
     }));
   }
-  
 
   render() {
+    const Wrapper = styled.div`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      background-color: #000;
+      border: 2px solid #fff;
+      border-radius: 100%;
+      user-select: none;
+      transform: translate(-50%, -50%);
+      cursor: ${props => (props.onClick ? 'pointer' : 'default')};
+      &:hover {
+        z-index: 1;
+      }
+    `;
     return (
       <div>
-        <Button color="success" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Wrapper onClick={this.toggle}>
+          <div style={{color: 'red', size: '3em'}}>{this.props.plant}</div>
+        </Wrapper>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>{this.props.buttonLabel}</ModalHeader>
+          <ModalHeader toggle={this.toggle}>{this.props.plant}</ModalHeader>
           <ModalBody>
               Name: {this.props.plantInfoProp['Label']} <br />
               Genus: {this.props.plantInfoProp['Genus']} <br />

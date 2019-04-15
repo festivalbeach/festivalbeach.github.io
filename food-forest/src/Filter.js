@@ -39,14 +39,14 @@ class Filter extends Component {
    * plantInfo is stored as a map of name to information
    * plantCoords is stored as a list of {name, x, y} objects
    */
-	
+
 
 
   render() {
     return (
       <div className="Filter">
         <header className="Filter-header">
-          <Popup trigger={<button class="btn default"> Filter </button>} modal-filter>
+          <Popup trigger={<button className="btn default"> Filter </button>} modal-filter>
             {close => (
               <div className="modal-filter">
                 <a className="close" onClick={close}>
@@ -64,8 +64,8 @@ class Filter extends Component {
                   <div class="item4"><Switch onChange={this.handleSwitch1} checked={this.state.filterOne} /></div>
                 </div>
 
-                <div class="grid-containter">  
-                  <div class="item1">Winter</div>  
+                <div class="grid-containter">
+                  <div class="item1">Winter</div>
                   <div class="item4"><Switch onChange={this.handleSwitch2} checked={this.state.filterTwo} /></div>
                 </div>
 
@@ -105,15 +105,15 @@ class Filter extends Component {
                         <Switch onChange={this.handleSwitch4} checked={this.state.filterFour} />
                     </label>
                   </div>
-                  
+
                 </div> */}
               </div>
             )}
-          </Popup>  
+          </Popup>
         </header>
       </div>
     );
-     
+
   }
 }
 
