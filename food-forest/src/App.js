@@ -41,18 +41,28 @@ class App extends Component {
       return (<p>Loading...</p>);
     }
     else
+
+      var plantInfo = this.state.plantInfo;
+
       return (
         <div className="App">
           <Navbar />
           <header className="App-header">
-            <PlantInfo />
+            
             <img src={logo} className="App-logo" alt="logo" />
+            
+            <PlantInfo buttonLabel={'Peach'} plantInfoProp={plantInfo['Peach']}/>
+            <PlantInfo buttonLabel={'Plum'} plantInfoProp={plantInfo['Plum']}/>
+            <PlantInfo buttonLabel={'Mexican Plum'} plantInfoProp={plantInfo['Mexican Plum']}/>
+            <PlantInfo buttonLabel={'Pecan'} plantInfoProp={plantInfo['Pecan']}/>
+            <PlantInfo buttonLabel={'Arroyo Sweetwood'} plantInfoProp={plantInfo['Arroyo Sweetwood']}/>
 
             {Object.keys(this.state.plantInfo).map((key, value) => (
               <p>Name:&nbsp;{key}&nbsp;&nbsp;&nbsp;Family:&nbsp;{this.state.plantInfo[key]['Family']}</p>
             ))}
-            {this.state.plantInfo['Peach']['Label']}
-
+            
+            {plantInfo['Peach']['Label']}
+            {plantInfo['Peach']['Family']}
             <a
               className="App-link"
               href="https://reactjs.org"
