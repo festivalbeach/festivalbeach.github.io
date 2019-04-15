@@ -71,12 +71,16 @@ class App extends Component {
           <header className="App-header">
             <button onClick={this.updateFilters}>Demo, this button filters out peaches.</button>
             <div id="map" style={{width: '100%', height: '90vh'}}>
-              <GoogleMapReact
+              {/* <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
                 defaultCenter={this.props.center}
                 defaultZoom={this.props.zoom}
                 yesIWantToUseGoogleMapApiInternals
-              >
+              > */}
+              <GoogleMapReact bootstrapURLKeys={{ key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}} 
+              defaultCenter={this.props.center} 
+              defaultZoom={this.props.zoom} 
+              options={function (maps) { return { mapTypeId: "satellite" } }} >
                 {Object.keys(plantCoords).map((key, value) =>{
                   var point = plantCoords[key];
                   if (!this.state.filtered.has(point['Name'])) {
