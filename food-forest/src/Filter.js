@@ -10,7 +10,10 @@ class Filter extends Component {
     super()
     this.state = {
       filterOne: true,
-      filterTwo: true
+      filterTwo: true,
+      filterThree: true,
+      filterFour: true,
+      filterFive: true
     }
     this.handleSwitch1 = this.handleSwitch1.bind(this);
     this.handleSwitch2 = this.handleSwitch2.bind(this);
@@ -55,7 +58,7 @@ class Filter extends Component {
                 <div className="header"> Filters </div>
 
                 <div class="grid-container">
-                  <div class="item1">Edibile</div>
+                  <div class="item1">Edible</div>
                   <div class="item4"><Switch onChange={this.handleSwitch5} checked={this.state.filterFive} /></div>
                 </div>
 

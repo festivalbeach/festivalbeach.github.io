@@ -14,8 +14,10 @@ class App extends Component {
     super()
     this.state = {
       plantInfo: {},
-      plantCoords: []
+      plantCoords: [],
+      filtered: new Set()
     }
+    this.updateFilters = this.updateFilters.bind(this)
   }
 
   /* Loads plant information and coordinates from a google spreadsheet.
@@ -39,6 +41,12 @@ class App extends Component {
     });
   }
 
+  updateFilters() {
+    this.setState(({filtered}) => ({
+      filtered: new Set().add('Peach')
+    }));
+  }
+
   static defaultProps = {
     center: {
       lat: 30.2534024,
@@ -55,17 +63,13 @@ class App extends Component {
     else
       var plantInfo = this.state.plantInfo;
       var plantCoords = this.state.plantCoords;
-
+      console.log(this.state.filtered.has('Peach'));
+      console.log(this.state.filtered);
       return (
         <div className="App">
-          <Navbar />
+          <Navbar/>
           <header className="App-header">
-
-            {/* <PlantInfo buttonLabel={'Peach'} plantInfoProp={plantInfo['Peach']}/>
-            <PlantInfo buttonLabel={'Plum'} plantInfoProp={plantInfo['Plum']}/>
-            <PlantInfo buttonLabel={'Mexican Plum'} plantInfoProp={plantInfo['Mexican Plum']}/>
-            <PlantInfo buttonLabel={'Pecan'} plantInfoProp={plantInfo['Pecan']}/>
-            <PlantInfo buttonLabel={'Arroyo Sweetwood'} plantInfoProp={plantInfo['Arroyo Sweetwood']}/> */}
+            <button onClick={this.updateFilters}>Demo, this button filters out peaches.</button>
             <div id="map" style={{width: '100%', height: '90vh'}}>
               <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
@@ -75,7 +79,7 @@ class App extends Component {
               >
                 {Object.keys(plantCoords).map((key, value) =>{
                   var point = plantCoords[key];
-                  if (point['Latitude']) {
+                  if (!this.state.filtered.has(point['Name'])) {
                     return <PlantInfo
                       plant={point['Name']}
                       lat={point['Latitude']}
