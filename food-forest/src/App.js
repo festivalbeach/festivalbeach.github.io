@@ -48,29 +48,20 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <header className="App-header">
-            
-            <img src={logo} className="App-logo" alt="logo" />
-            
+                        
             <PlantInfo buttonLabel={'Peach'} plantInfoProp={plantInfo['Peach']}/>
             <PlantInfo buttonLabel={'Plum'} plantInfoProp={plantInfo['Plum']}/>
             <PlantInfo buttonLabel={'Mexican Plum'} plantInfoProp={plantInfo['Mexican Plum']}/>
             <PlantInfo buttonLabel={'Pecan'} plantInfoProp={plantInfo['Pecan']}/>
             <PlantInfo buttonLabel={'Arroyo Sweetwood'} plantInfoProp={plantInfo['Arroyo Sweetwood']}/>
 
-            {Object.keys(this.state.plantInfo).map((key, value) => (
+            {/* {Object.keys(this.state.plantInfo).map((key, value) => (
               <p>Name:&nbsp;{key}&nbsp;&nbsp;&nbsp;Family:&nbsp;{this.state.plantInfo[key]['Family']}</p>
             ))}
             
             {plantInfo['Peach']['Label']}
-            {plantInfo['Peach']['Family']}
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
+            {plantInfo['Peach']['Family']} */}
+            
           </header>
         </div>
       );

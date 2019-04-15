@@ -38,15 +38,15 @@ export default class Example extends React.Component {
         <Navbar color="faded" light expand="md">
 	      <NavbarBrand href="/">Festival Beach Food Forest Map</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
-	  <    Collapse isOpen={this.state.isOpen} navbar>
+	      <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="https://festivalbeach.org/">Food Forest Website</NavLink> 
-	            </NavItem>
 	            <NavItem>
 	              <Filter />
 	            </NavItem>
-              <UncontrolledDropdown nav inNavbar>
+              <NavItem>
+                <NavLink href="https://festivalbeach.org/">Food Forest Website</NavLink> 
+	            </NavItem>
+              {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options
                 </DropdownToggle>
@@ -62,7 +62,7 @@ export default class Example extends React.Component {
                   Reset
               </DropdownItem>
 	        </DropdownMenu>
-	      </UncontrolledDropdown>
+	      </UncontrolledDropdown> */}
 	    </Nav>
 	  </Collapse>
 	</Navbar>

@@ -2,6 +2,18 @@
     text-align: center;
   }
   
+  .btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  /* On mouse-over */
+  .btn:hover {background: #eee;}
+  
   
   .Filter-header {
     background-color: white;
@@ -31,10 +43,19 @@
   .modal-filter > .content {
     width: 100%;
     padding: 10px 5px;
-    color: black
-  
+    color: black;
+    text-align: center  
   }
-  .modal-filter > .actions {
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    text-align: center;
+    grid-gap: 1px;
+    padding: 5px;
+  }
+
+  .modal-filter > .actions {  
     width: 100%;
     padding: 10px 5px;
     margin: auto;

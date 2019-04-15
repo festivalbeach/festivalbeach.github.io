@@ -23,7 +23,7 @@ class PlantInfo extends React.Component {
       <div>
         <Button color="success" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Plant Name</ModalHeader>
+          <ModalHeader toggle={this.toggle}>{this.props.buttonLabel}</ModalHeader>
           <ModalBody>
               Name: {this.props.plantInfoProp['Label']} <br />
               Genus: {this.props.plantInfoProp['Genus']} <br />
