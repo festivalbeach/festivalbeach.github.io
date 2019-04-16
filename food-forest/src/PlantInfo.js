@@ -19,29 +19,27 @@ class PlantInfo extends React.Component {
   }
 
   render() {
-    
-    // const Wrapper = styled.div`
-    //   position: absolute;
-    //   top: 50%;
-    //   left: 50%;
-    //   width: 18px;
-    //   height: 18px;
-    //   background-color: #000;
-    //   border: 2px solid #fff;
-    //   border-radius: 100%;
-    //   user-select: none;
-    //   transform: translate(-50%, -50%);
-    //   cursor: ${props => (props.onClick ? 'pointer' : 'default')};
-    //   &:hover {
-    //     z-index: 1;
-    //   }
-    // `;
+    const Wrapper = styled.div`
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      background-color: #000;
+      border: 2px solid #333;
+      border-radius: 100%;
+      user-select: none;
+      transform: translate(-50%, -50%);
+      cursor: ${props => (props.onClick ? 'pointer' : 'default')};
+      &:hover {
+        z-index: 1;
+      }
+    `;
     return (
       <div>
-        <div className="icon" ><i class="material-icons" >local_florist</i></div>
-        <icon onClick={this.toggle}>
-          <div style={{color: 'white', size: '5em', marginLeft: '20px'}}>{this.props.plant}</div>
-        </icon>
+        <Wrapper onClick={this.toggle}>
+          <div style={{color: 'white', size: '4em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
+        </Wrapper>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.plant}</ModalHeader>
           <ModalBody>
