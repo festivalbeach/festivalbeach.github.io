@@ -26,7 +26,7 @@ class PlantInfo extends React.Component {
       width: 18px;
       height: 18px;
       background-color: #000;
-      border: 2px solid #fff;
+      border: 2px solid #333;
       border-radius: 100%;
       user-select: none;
       transform: translate(-50%, -50%);
@@ -38,7 +38,7 @@ class PlantInfo extends React.Component {
     return (
       <div>
         <Wrapper onClick={this.toggle}>
-          <div style={{color: 'red', size: '3em'}}>{this.props.plant}</div>
+          <div style={{color: 'white', size: '4em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
         </Wrapper>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.plant}</ModalHeader>
