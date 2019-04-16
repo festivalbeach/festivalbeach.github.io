@@ -69,7 +69,7 @@ class App extends Component {
         <div className="App">
           <Navbar/>
           <header className="App-header">
-            <button onClick={this.updateFilters}>Demo, this button filters out peaches.</button>
+            <button onClick={this.updateFilters}>Filter Peaches</button>
             <div id="map" style={{width: '100%', height: '90vh'}}>
               {/* <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
