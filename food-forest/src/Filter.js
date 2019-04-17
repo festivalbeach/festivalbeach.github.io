@@ -41,7 +41,11 @@ class Filter extends Component {
 
   refilter() {
     var filtered = new Set();
-    // this.props.plantInfo
+    // Object.keys(this.props.plantInfo).map((key, value) => {});
+    // Example, toggle Edible. delete this
+    if (!this.state.filterFive) {
+      filtered.add('Peach');
+    }
     this.props.updateFilters(filtered);
   }
 
