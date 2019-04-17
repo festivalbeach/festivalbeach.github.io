@@ -18,28 +18,33 @@ class PlantInfo extends React.Component {
     }));
   }
 
-  render() {
-    const Wrapper = styled.div`
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 18px;
-      height: 18px;
-      background-color: #000;
-      border: 2px solid #333;
-      border-radius: 100%;
-      user-select: none;
-      transform: translate(-50%, -50%);
-      cursor: ${props => (props.onClick ? 'pointer' : 'default')};
-      &:hover {
-        z-index: 1;
-      }
-    `;
+   render() {
+  //   const Wrapper = styled.div`
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     width: 18px;
+  //     height: 18px;
+  //     background-color: #000;
+  //     border: 2px solid #333;
+  //     border-radius: 100%;
+  //     user-select: none;
+  //     transform: translate(-50%, -50%);
+  //     cursor: ${props => (props.onClick ? 'pointer' : 'default')};
+  //     &:hover {
+  //       z-index: 1;
+  //     }
+  //   `;
+   
     return (
       <div>
-        <Wrapper onClick={this.toggle}>
-          <div style={{color: 'white', size: '4em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
-        </Wrapper>
+        {/* // <Wrapper onClick={this.toggle}>
+        //   <div style={{color: 'white', size: '4em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
+        // </Wrapper> */}
+        <div className="icon" ><i class="material-icons" onClick={this.toggle}>local_florist</i></div>
+        <icon >
+          <div style={{color: 'white', size: '5em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
+        </icon>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.plant}</ModalHeader>
           <ModalBody>

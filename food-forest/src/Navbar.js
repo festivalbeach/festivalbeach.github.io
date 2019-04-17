@@ -1,6 +1,7 @@
 import React from 'react';
 import Filter from './Filter.js'
 import PlantInfo from './PlantInfo.js'
+import Image from 'react-bootstrap/Image'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
@@ -35,8 +36,11 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
+        {/* style={{backgroundColor: '#696158'}} */}
         <Navbar color="faded" light expand="md">
-	      <NavbarBrand href="/">Festival Beach Food Forest Map</NavbarBrand>
+	      <NavbarBrand href="/">
+          <Image src="http://festivalbeach.org/wp-content/uploads/2015/12/festival-beach-food-forest.jpg" style={{width:200}}fluid />
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
 	      <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
