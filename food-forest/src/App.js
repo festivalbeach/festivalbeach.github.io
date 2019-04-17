@@ -23,7 +23,6 @@ class App extends Component {
       },
       zoom: 19
     }
-    this.updateFilters = this.updateFilters.bind(this)
   }
 
   /* Loads plant information and coordinates from a google spreadsheet.
@@ -52,10 +51,8 @@ class App extends Component {
     });
   }
 
-  updateFilters() {
-    this.setState(({filtered}) => ({
-      filtered: new Set().add('Peach')
-    }));
+  updateFilters(items) {
+    this.setState({filtered: items});
   }
 
   render() {
@@ -65,13 +62,10 @@ class App extends Component {
     else
       var plantInfo = this.state.plantInfo;
       var plantCoords = this.state.plantCoords;
-      console.log(this.state.filtered.has('Peach'));
-      console.log(this.state.filtered);
       return (
         <div className="App">
-          <Navbar/>
+          <Navbar info={this.state.plantInfo} updateFilters={this.updateFilters.bind(this)}/>
           <header className="App-header">
-            <button onClick={this.updateFilters}>Filter Peaches</button>
             <div id="map" style={{width: '100%', height: '90vh'}}>
               <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}

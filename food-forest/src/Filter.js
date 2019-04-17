@@ -23,21 +23,29 @@ class Filter extends Component {
   }
 
   handleSwitch1(filterOne){
-    this.setState({filterOne});
+    this.setState({filterOne: filterOne}, this.refilter);
   }
-  handleSwitch2(filterTwo){
-    this.setState({filterTwo})
+  handleSwitch2(filterTwo) {
+    this.setState({filterTwo: filterTwo}, this.refilter);
   }
-  handleSwitch3(filterThree){
-    this.setState({filterThree})
+  handleSwitch3(filterThree) {
+    this.setState({filterThree: filterThree}, this.refilter);
   }
-  handleSwitch4(filterFour){
-    this.setState({filterFour})
+  handleSwitch4(filterFour) {
+    this.setState({filterFour: filterFour}, this.refilter);
   }
 
-  handleSwitch5(filterFive){
-    this.setState({filterFive});
+  handleSwitch5(filterFive) {
+    this.setState({filterFive: filterFive}, this.refilter);
   }
+
+  refilter() {
+    var filtered = new Set();
+    // this.props.plantInfo
+    this.props.updateFilters(filtered);
+  }
+
+
   /* Loads plant information and coordinates from a google spreadsheet.
    * plantInfo is stored as a map of name to information
    * plantCoords is stored as a list of {name, x, y} objects

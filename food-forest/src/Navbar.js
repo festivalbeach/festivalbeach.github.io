@@ -20,19 +20,19 @@ import {
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
-  
+
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
     };
   }
-	
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
-	
+
   render() {
     return (
       <div>
@@ -45,10 +45,10 @@ export default class Example extends React.Component {
 	      <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
 	            <NavItem>
-	              <Filter />
+	              <Filter info={this.props.plantInfo} updateFilters={this.props.updateFilters}/>
 	            </NavItem>
               <NavItem>
-                <NavLink href="https://festivalbeach.org/">Food Forest Website</NavLink> 
+                <NavLink href="https://festivalbeach.org/">Food Forest Website</NavLink>
 	            </NavItem>
               {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -74,5 +74,3 @@ export default class Example extends React.Component {
     );
   }
 }
-	
-
