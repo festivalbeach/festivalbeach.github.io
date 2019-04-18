@@ -75,7 +75,7 @@ class App extends Component {
                       plant={point['Label']}
                       lat={point['Latitude']}
                       lng={point['Longitude']}
-                      plantInfoProp={plantInfo[point['Label']]}
+                      plantInfoProp={point}
                     />
                   }
                 })}
