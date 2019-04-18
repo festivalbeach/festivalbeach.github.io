@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from './Filter.js'
 import PlantInfo from './PlantInfo.js'
 import Image from 'react-bootstrap/Image'
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from './foodforest_icon.PNG';
 
 import {
   Collapse,
@@ -37,18 +37,18 @@ export default class Example extends React.Component {
     return (
       <div>
         {/* style={{backgroundColor: '#696158'}} */}
-        <Navbar color="faded" light expand="md">
+        <Navbar color="faded" light expand="md" style={{backgroundColor: '#4B453F'}}>
 	      <NavbarBrand href="/">
-          <Image src="http://festivalbeach.org/wp-content/uploads/2015/12/festival-beach-food-forest.jpg" style={{width:200}}fluid />
+          <Image src= {logo} alt="Logo" style={{width:200}}fluid />
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
 	      <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
 	            <NavItem>
-	              <Filter info={this.props.plantInfo} updateFilters={this.props.updateFilters}/>
+	              <Filter info={this.props.plantInfo} updateFilters={this.props.updateFilters} style={{color: 'white'}}/>
 	            </NavItem>
               <NavItem>
-                <NavLink href="https://festivalbeach.org/">Food Forest Website</NavLink>
+                <NavLink href="https://festivalbeach.org/" style={{color: 'white'}}>Food Forest Website</NavLink>
 	            </NavItem>
               {/* <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

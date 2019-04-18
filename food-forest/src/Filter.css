@@ -1,29 +1,33 @@
 .Filter {
     text-align: center;
+    color: white
   }
   
   .btn {
     border: none;
     background-color: inherit;
-    padding: 14px 28px;
+    /* padding: 14px 28px; */
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
+    color: white;
   }
   
   /* On mouse-over */
-  .btn:hover {background: #eee;}
+  .btn:hover {
+    background: #433E38;
+  }
   
   
   .Filter-header {
-    background-color: white;
+    background-color: #4B453F;
     /*min-height: 100vh;*/
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(4px + 2vmin);
-    color: gray;
+    color: black;
   }
   
   .Filter-link {

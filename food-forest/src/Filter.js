@@ -61,7 +61,7 @@ class Filter extends Component {
     return (
       <div className="Filter">
         <header className="Filter-header">
-          <Popup trigger={<button className="btn default"> Filter </button>} modal-filter>
+          <Popup trigger={<button className="btn default" style={{color: 'white'}}> Filter </button>} modal-filter>
             {close => (
               <div className="modal-filter">
                 <a className="close" onClick={close}>
