@@ -15,7 +15,6 @@ class App extends Component {
     super()
     this.state = {
       plantInfo: {},
-      plantCoords: [],
       filtered: new Set(),
       center: {
         lat: 30.2529,
@@ -31,12 +30,10 @@ class App extends Component {
    */
   componentDidMount() {
     Tabletop.init({
-      key: '1ecF8O2AxaI3DDI8A-o3B7zvzAeYYNU9HDvsshXAAmwc',
+      key: '1_sQkoLJtMppKImYY5A7G06NqK1DrAZ9hGd596GKImFk',
       callback: (junk, tabletop) => {
         let info = {};
-        let coords = tabletop.sheets('Plant_Coordinates').all()
-        tabletop.sheets('Plant_Details').all().forEach(dat => {
-
+        tabletop.sheets('Plant_Information').all().forEach(dat => {
           info[dat['Label']] = dat;
         });
         if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled && this.props.coords) {
@@ -46,7 +43,7 @@ class App extends Component {
             this.setState({center: {lat: this.props.coords.latitude, lng: this.props.coords.longitude}, zoom: 22});
           }
         }
-        this.setState({plantInfo: info, plantCoords: coords});
+        this.setState({plantInfo: info});
       }
     });
   }
@@ -61,7 +58,6 @@ class App extends Component {
     }
     else
       var plantInfo = this.state.plantInfo;
-      var plantCoords = this.state.plantCoords;
       return (
         <div className="App">
           <Navbar info={this.state.plantInfo} updateFilters={this.updateFilters.bind(this)}/>
@@ -72,14 +68,14 @@ class App extends Component {
                 defaultCenter={this.state.center}
                 defaultZoom={this.state.zoom}
                 options={function (maps) { return { mapTypeId: "satellite" } }}>
-                {Object.keys(plantCoords).map((key, value) =>{
-                  var point = plantCoords[key];
-                  if (!this.state.filtered.has(point['Name'])) {
+                {Object.keys(plantInfo).map((key, value) =>{
+                  var point = plantInfo[key];
+                  if (!this.state.filtered.has(point['Label']) && point['Latitude'] != undefined && point['Longitude'] != undefined) {
                     return <PlantInfo
-                      plant={point['Name']}
+                      plant={point['Label']}
                       lat={point['Latitude']}
                       lng={point['Longitude']}
-                      plantInfoProp={plantInfo[point['Name']]}
+                      plantInfoProp={plantInfo[point['Label']]}
                     />
                   }
                 })}
