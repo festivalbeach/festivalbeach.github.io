@@ -14,7 +14,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      plantInfo: {},
+      plantInfo: [],
       filtered: new Set(),
       center: {
         lat: 30.2529,
@@ -32,10 +32,6 @@ class App extends Component {
     Tabletop.init({
       key: '1_sQkoLJtMppKImYY5A7G06NqK1DrAZ9hGd596GKImFk',
       callback: (junk, tabletop) => {
-        let info = {};
-        tabletop.sheets('Plant_Information').all().forEach(dat => {
-          info[dat['Label']] = dat;
-        });
         if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled && this.props.coords) {
           var lat = this.props.coords.latitude;
           var lng = this.props.coords.longitude;
@@ -43,7 +39,7 @@ class App extends Component {
             this.setState({center: {lat: this.props.coords.latitude, lng: this.props.coords.longitude}, zoom: 22});
           }
         }
-        this.setState({plantInfo: info});
+        this.setState({plantInfo: tabletop.sheets('Plant_Information').all()});
       }
     });
   }
@@ -68,14 +64,13 @@ class App extends Component {
                 defaultCenter={this.state.center}
                 defaultZoom={this.state.zoom}
                 options={function (maps) { return { mapTypeId: "satellite" } }}>
-                {Object.keys(plantInfo).map((key, value) =>{
-                  var point = plantInfo[key];
-                  if (!this.state.filtered.has(point['Label']) && point['Latitude'] != undefined && point['Longitude'] != undefined) {
+                {Object.keys(plantInfo).map((index) => {
+                  if (!this.state.filtered.has(plantInfo[index]['Label']) && plantInfo[index]['Latitude'] != undefined && plantInfo[index]['Longitude'] != undefined) {
                     return <PlantInfo
-                      plant={point['Label']}
-                      lat={point['Latitude']}
-                      lng={point['Longitude']}
-                      plantInfoProp={point}
+                      plant={plantInfo[index]['Label']}
+                      lat={plantInfo[index]['Latitude']}
+                      lng={plantInfo[index]['Longitude']}
+                      plantInfoProp={plantInfo[index]}
                     />
                   }
                 })}
