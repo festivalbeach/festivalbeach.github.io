@@ -39,7 +39,7 @@ class App extends Component {
             this.setState({center: {lat: this.props.coords.latitude, lng: this.props.coords.longitude}, zoom: 22});
           }
         }
-        this.setState({plantInfo: tabletop.sheets('Plant_Information').all()});
+        this.setState({plantInfo: tabletop.sheets('Plant_Information').all().filter(point => point['Label'].length > 0)});
       }
     });
   }
