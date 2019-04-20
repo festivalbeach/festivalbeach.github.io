@@ -142,7 +142,7 @@ class Filter extends Component {
             {close => (
               <div className="modal-filter">
                 <a className="close" onClick={close}>
-                  &times
+                  &times;
                 </a>
                 <div className="header"> Filters </div>
 
