@@ -1,57 +1,134 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import './Filter.css'
-import Tabletop from 'tabletop';
-import Popup from "reactjs-popup";
+import Tabletop from 'tabletop'
+import Popup from "reactjs-popup"
 import Switch from "react-switch"
 
 class Filter extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      filterOne: true,
-      filterTwo: true,
-      filterThree: true,
-      filterFour: true,
-      filterFive: true
+      filterAll: true,
+      filterEdibleFruit: false,
+      filterEdibleSeed: false,
+      filterSummer: false,
+      filterWinter: false,
+      filterFall: false,
+      filterSpring: false
     }
-    this.handleSwitch1 = this.handleSwitch1.bind(this);
-    this.handleSwitch2 = this.handleSwitch2.bind(this);
-    this.handleSwitch3 = this.handleSwitch3.bind(this);
-    this.handleSwitch4 = this.handleSwitch4.bind(this);
-    this.handleSwitch5 = this.handleSwitch5.bind(this);
+    this.handleSwitch1 = this.handleSwitch1.bind(this)
+    this.handleSwitch2 = this.handleSwitch2.bind(this)
+    this.handleSwitch3 = this.handleSwitch3.bind(this)
+    this.handleSwitch4 = this.handleSwitch4.bind(this)
+    this.handleSwitch5 = this.handleSwitch5.bind(this)
+    this.handleSwitch6 = this.handleSwitch6.bind(this)
+    this.handleSwitch7 = this.handleSwitch7.bind(this)
   }
 
-  handleSwitch1(filterOne){
-    this.setState({filterOne: filterOne}, this.refilter);
+  handleSwitch1(filterAll) {
+    this.setState({filterAll: filterAll}, this.refilter)
   }
-  handleSwitch2(filterTwo) {
-    this.setState({filterTwo: filterTwo}, this.refilter);
+  handleSwitch2(filterEdibleFruit) {
+    this.setState({filterEdibleFruit: filterEdibleFruit}, this.refilter)
   }
-  handleSwitch3(filterThree) {
-    this.setState({filterThree: filterThree}, this.refilter);
+  handleSwitch3(filterEdibleSeed) {
+    this.setState({filterEdibleSeed: filterEdibleSeed}, this.refilter)
   }
-  handleSwitch4(filterFour) {
-    this.setState({filterFour: filterFour}, this.refilter);
+  handleSwitch4(filterSpring) {
+    this.setState({filterSpring: filterSpring}, this.refilter)
   }
-
-  handleSwitch5(filterFive) {
-    this.setState({filterFive: filterFive}, this.refilter);
+  handleSwitch5(filterSummer){
+    this.setState({filterSummer: filterSummer}, this.refilter)
+  }
+  handleSwitch6(filterFall) {
+    this.setState({filterFall: filterFall}, this.refilter)
+  }
+  handleSwitch7(filterWinter) {
+    this.setState({filterWinter: filterWinter}, this.refilter)
+  }
+  
+  filterColumn(oneFilter, entry, columnName){
+    if(entry[columnName] === 'FALSE'){
+      oneFilter.add(entry['Label'])
+    }
+  }
+  filterSeason(oneFilter, entry, season){
+    if(season === entry['Harvest-able Season']){
+      oneFilter.add(entry['Label'])
+    }
+  }
+  intersection(filtered, oneFilter){
+    return new Set([...filtered].filter(x => oneFilter.has(x)))
   }
 
   refilter() {
-    var filtered = new Set();
-    // Object.keys(this.props.plantInfo).map((key, value) => {});
-    // Example, toggle Edible. delete this
-    if (!this.state.filterFive) {
-      filtered.add('Peach');
+    var filtered = new Set()
+    var fruit = new Set()
+    var seed = new Set()
+    // TODO remove comments after Harvest-able season has been added to spreadsheet
+    // var spring = new Set()
+    // var summer = new Set()
+    // var fall = new Set()
+    // var winter = new Set()
+    var info = this.props.info
+    
+    Object.keys(info).map((key) => {
+      //at least one filter is true or switch is on
+      var filter = this.state.filterEdibleFruit || this.state.filterEdibleSeed
+      if(!this.state.filterAll){
+        filtered.add(info[key]['Label'])
+        if(filter){
+          if(this.state.filterEdibleFruit){
+            this.filterColumn(fruit, info[key], 'Edible (fruit) Y/N')
+          }
+          if(this.state.filterEdibleSeed){
+            this.filterColumn(seed, info[key], 'Edible Seed')
+          }
+          // TODO remove comments after Harvest-able season has been added to spreadsheet
+          // if(this.state.filterSpring){
+          //   this.filterColumn(spring, info[key])
+          // }
+          // if(this.state.filterSummer){
+          //   this.filterColumn(summer, info[key])
+          // }
+          // if(this.state.filterFall){
+          //   this.filterColumn(fall, info[key])
+          // }
+          // if(this.state.filterWinter){
+          //   this.filterColumn(winter, info[key])
+          // }
+        }
+      }
+    })
+    //intersection of all sets that are on
+    //if all are off, filter all plants
+    if(this.state.filterEdibleFruit){
+      filtered = this.intersection(filtered, fruit)
     }
-    this.props.updateFilters(filtered);
+    if(this.state.filterEdibleSeed){
+      filtered = this.intersection(filtered, seed)
+    }
+    // TODO remove comments after Harvest-able season has been added to spreadsheet
+    // if(this.state.filterSpring){
+    //   filtered = this.intersection(filtered, spring)
+    // }
+    // if(this.state.filterSummer){
+    //   filtered = this.intersection(filtered, summer)
+    // }
+    // if(this.state.filterFall){
+    //   filtered = this.intersection(filtered, fall)
+    // }
+    // if(this.state.filterWinter){
+    //   filtered = this.intersection(filtered, winter)
+    // }
+
+    this.props.updateFilters(filtered)
   }
 
 
   /* Loads plant information and coordinates from a google spreadsheet.
-   * plantInfo is stored as a map of name to information
+   * info is stored as a map of name to information
    * plantCoords is stored as a list of {name, x, y} objects
    */
 
@@ -65,71 +142,53 @@ class Filter extends Component {
             {close => (
               <div className="modal-filter">
                 <a className="close" onClick={close}>
-                  &times;
+                  &times
                 </a>
                 <div className="header"> Filters </div>
 
                 <div class="grid-container">
-                  <div class="item1">Edible</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch5} checked={this.state.filterFive} /></div>
+                  <div class="item1">All</div>
+                  <div class="item4"><Switch onChange={this.handleSwitch1} checked={this.state.filterAll} /></div>
                 </div>
 
                 <div class="grid-container">
-                  <div class="item1">Summer</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch1} checked={this.state.filterOne} /></div>
-                </div>
-
-                <div class="grid-containter">
-                  <div class="item1">Winter</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch2} checked={this.state.filterTwo} /></div>
+                  <div class="item1">Edible Fruit</div>
+                  <div class="item4"><Switch onChange={this.handleSwitch2} checked={this.state.filterEdibleFruit} /></div>
                 </div>
 
                 <div class="grid-container">
-                  <div class="item1">Fall</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch3} checked={this.state.filterThree} /></div>
+                  <div class="item1">Edible Seed</div>
+                  <div class="item4"><Switch onChange={this.handleSwitch3} checked={this.state.filterEdibleSeed} /></div>
                 </div>
 
                 <div class="grid-container">
                   <div class="item1">Spring</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch4} checked={this.state.filterFour} /></div>
+                  <div class="item4"><Switch onChange={this.handleSwitch4} checked={this.state.filterSpring} /></div>
                 </div>
 
+                <div class="grid-container">
+                  <div class="item1">Summer</div>
+                  <div class="item4"><Switch onChange={this.handleSwitch5} checked={this.state.filterSummer} /></div>
+                </div>
 
+                <div class="grid-container">
+                  <div class="item1">Fall</div>
+                  <div class="item4"><Switch onChange={this.handleSwitch6} checked={this.state.filterFall} /></div>
+                </div>
 
-                {/* <div className="actions">
-                  <div>
-                    <label>
-                        <Switch onChange={this.handleSwitch1} checked={this.state.filterOne} />
-                    </label>
-                  </div>
-                  <div>
-                    <label>
-                    <span>Winter</span>
-                        <Switch onChange={this.handleSwitch2} checked={this.state.filterTwo} />
-                    </label>
-                  </div>
-                  <div>
-                    <label>
-                    <span>Fall</span>
-                        <Switch onChange={this.handleSwitch3} checked={this.state.filterThree} />
-                    </label>
-                  </div>
-                  <div>
-                    <label>
-                    <span>Winter</span>
-                        <Switch onChange={this.handleSwitch4} checked={this.state.filterFour} />
-                    </label>
-                  </div>
+                <div class="grid-containter">
+                  <div class="item1">Winter</div>
+                  <div class="item4"><Switch onChange={this.handleSwitch7} checked={this.state.filterWinter} /></div>
+                </div>
 
-                </div> */}
               </div>
             )}
           </Popup>
         </header>
       </div>
-    );
+    )
 
   }
 }
 
-export default Filter;
+export default Filter

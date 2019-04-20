@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar.js'
 import PlantInfo from './PlantInfo.js'
 import Tabletop from 'tabletop';
 import GoogleMapReact from 'google-map-react';
-import Popup from "reactjs-popup";
-import Switch from "react-switch"
 import { geolocated } from 'react-geolocated';
 
 class App extends Component {
