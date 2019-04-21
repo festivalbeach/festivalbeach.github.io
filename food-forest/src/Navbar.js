@@ -45,7 +45,7 @@ export default class Example extends React.Component {
 	      <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
 	            <NavItem>
-	              <Filter info={this.props.plantInfo} updateFilters={this.props.updateFilters} style={{color: 'white'}}/>
+	              <Filter info={this.props.info} updateFilters={this.props.updateFilters} style={{color: 'white'}}/>
 	            </NavItem>
               <NavItem>
                 <NavLink href="https://festivalbeach.org/" style={{color: 'white'}}>Food Forest Website</NavLink>
