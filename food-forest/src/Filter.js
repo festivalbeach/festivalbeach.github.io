@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import './Filter.css'
-import Tabletop from 'tabletop'
 import Popup from "reactjs-popup"
 import Switch from "react-switch"
+import { Container, Row, Col } from 'reactstrap';
+// import Container from 'react-bootstrap/Container'
+// import Tabletop from 'tabletop'
 
 class Filter extends Component {
 
@@ -145,42 +147,54 @@ class Filter extends Component {
                   &times;
                 </a>
                 <div className="header"> Filters </div>
-
                 <div class="grid-container">
-                  <div class="item1">All</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch1} checked={this.state.filterAll} /></div>
+                <Container>
+                  <Row className="justify-content-md-center">
+                    <Col>All</Col>
+                    <Col>
+                      <div class="item4"><Switch onChange={this.handleSwitch1} checked={this.state.filterAll} /></div>
+                    </Col>
+                  </Row>
+                  <Row className="justify-content-md-center">
+                    <Col><div class="item1">Edible Fruit</div></Col>
+                    <Col>
+                      <div class="item4"><Switch onChange={this.handleSwitch2} checked={this.state.filterEdibleFruit} /></div>
+                    </Col>
+                  </Row>
+                  <Row className="justify-content-md-center">
+                    <Col><div class="item1">Edible Seed</div></Col>
+                    <Col>
+                      <div class="item4"><Switch onChange={this.handleSwitch3} checked={this.state.filterEdibleSeed} /></div>
+                    </Col>
+                  </Row>
+                  <div class = "season-filters">
+                    <Row className="justify-content-md-center">
+                      <Col>Spring</Col>
+                      <Col>
+                        <div class="item4"><Switch onChange={this.handleSwitch4} checked={this.state.filterSpring} /></div>
+                      </Col>
+                    </Row>
+                    <Row className="justify-content-md-center">
+                      <Col>Summer</Col>
+                      <Col>
+                        <div class="item4"><Switch onChange={this.handleSwitch5} checked={this.state.filterSummer} /></div>
+                      </Col>
+                    </Row>
+                    <Row className="justify-content-md-center">
+                      <Col>Fall</Col>
+                      <Col>
+                        <div class="item4"><Switch onChange={this.handleSwitch6} checked={this.state.filterFall} /></div>
+                      </Col>
+                    </Row>
+                    <Row className="justify-content-md-center">
+                      <Col>Winter</Col>
+                      <Col>
+                        <div class="item4"><Switch onChange={this.handleSwitch7} checked={this.state.filterWinter} /></div>
+                      </Col>
+                    </Row>
+                  </div>
+                </Container>
                 </div>
-
-                <div class="grid-container">
-                  <div class="item1">Edible Fruit</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch2} checked={this.state.filterEdibleFruit} /></div>
-                </div>
-
-                <div class="grid-container">
-                  <div class="item1">Edible Seed</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch3} checked={this.state.filterEdibleSeed} /></div>
-                </div>
-
-                <div class="grid-container">
-                  <div class="item1">Spring</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch4} checked={this.state.filterSpring} /></div>
-                </div>
-
-                <div class="grid-container">
-                  <div class="item1">Summer</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch5} checked={this.state.filterSummer} /></div>
-                </div>
-
-                <div class="grid-container">
-                  <div class="item1">Fall</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch6} checked={this.state.filterFall} /></div>
-                </div>
-
-                <div class="grid-containter">
-                  <div class="item1">Winter</div>
-                  <div class="item4"><Switch onChange={this.handleSwitch7} checked={this.state.filterWinter} /></div>
-                </div>
-
               </div>
             )}
           </Popup>
