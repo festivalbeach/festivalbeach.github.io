@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar.js'
 import PlantInfo from './PlantInfo.js'
 import Tabletop from 'tabletop';
 import GoogleMapReact from 'google-map-react';
-import Popup from "reactjs-popup";
-import Switch from "react-switch"
 import { geolocated } from 'react-geolocated';
 
 class App extends Component {
@@ -54,6 +51,8 @@ class App extends Component {
     }
     else
       var plantInfo = this.state.plantInfo;
+      var plantColor = null;
+     
       return (
         <div className="App">
           <Navbar info={this.state.plantInfo} updateFilters={this.updateFilters.bind(this)}/>
@@ -65,11 +64,23 @@ class App extends Component {
                 defaultZoom={this.state.zoom}
                 options={function (maps) { return { mapTypeId: "satellite" } }}>
                 {Object.keys(plantInfo).map((index) => {
+                  if(plantInfo[index]['Toxicity (Rating: 1-4)'] != undefined){
+                    if(plantInfo[index]['Toxicity (Rating: 1-4)'] === "1 - Safe to eat. Enjoy!" ){
+                      plantColor = "#93C054";
+                    }
+                    else if(plantInfo[index]['Toxicity (Rating: 1-4)'] === "2 - May need some processing."){
+                      plantColor = "#F68D2E";
+                    }
+                    else {
+                      plantColor = "#EE2737";
+                    }
+                  }
                   if (!this.state.filtered.has(plantInfo[index]['Label']) && plantInfo[index]['Latitude'] != undefined && plantInfo[index]['Longitude'] != undefined) {
                     return <PlantInfo
                       plant={plantInfo[index]['Label']}
                       lat={plantInfo[index]['Latitude']}
                       lng={plantInfo[index]['Longitude']}
+                      color={plantColor}
                       plantInfoProp={plantInfo[index]}
                     />
                   }
