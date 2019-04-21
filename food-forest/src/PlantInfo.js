@@ -41,7 +41,7 @@ class PlantInfo extends React.Component {
         {/* // <Wrapper onClick={this.toggle}>
         //   <div style={{color: 'white', size: '4em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
         // </Wrapper> */}
-        <div className="icon" ><i class="material-icons" onClick={this.toggle}>local_florist</i></div>
+        <div className="icon" ><i class="material-icons" style={{color:this.props.color}}onClick={this.toggle}>local_florist</i></div>
         <icon >
           <div style={{color: 'white', size: '5em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
         </icon>
