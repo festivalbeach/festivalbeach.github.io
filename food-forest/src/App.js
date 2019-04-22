@@ -14,10 +14,10 @@ class App extends Component {
       plantInfo: [],
       filtered: new Set(),
       center: {
-        lat: 30.2529,
+        lat: 30.2535,
         lng: -97.7350
       },
-      zoom: 19
+      zoom: 20
     }
   }
 
@@ -32,8 +32,8 @@ class App extends Component {
         if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled && this.props.coords) {
           var lat = this.props.coords.latitude;
           var lng = this.props.coords.longitude;
-          if (lat >= 30.2520 && lat <= 30.2535 && lng >= -97.7360 && lng <= -97.7340) {
-            this.setState({center: {lat: this.props.coords.latitude, lng: this.props.coords.longitude}, zoom: 22});
+          if (lat >= 30.2525 && lat <= 30.2535 && lng >= -97.736 && lng <= -97.734) {
+            this.setState({center: {lat: this.props.coords.latitude, lng: this.props.coords.longitude}, zoom: 20});
           }
         }
         this.setState({plantInfo: tabletop.sheets('Plant_Information').all().filter(point => point['Label'].length > 0)});
@@ -62,7 +62,15 @@ class App extends Component {
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
                 defaultCenter={this.state.center}
                 defaultZoom={this.state.zoom}
-                options={function (maps) { return { mapTypeId: "satellite" } }}>
+                options={function (maps) { return { mapTypeId: "satellite", minZoom: 19, maxZoom: 20, restriction: {
+                  latLngBounds: {
+                    east: -97.734,
+                    north: 30.2535,
+                    south: 30.2525,
+                    west: -97.736
+                  },
+                  strictBounds: true
+                }} }}>
                 {Object.keys(plantInfo).map((index) => {
                   if(plantInfo[index]['Toxicity (Rating: 1-4)'] != undefined){
                     if(plantInfo[index]['Toxicity (Rating: 1-4)'] === "1 - Safe to eat. Enjoy!" ){
