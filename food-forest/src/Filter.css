@@ -38,7 +38,7 @@
   }
   .modal-filter > .header {
     width: 100%;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid gray;
     font-size: 18px;
     text-align: center;
     padding: 5px;
@@ -83,6 +83,14 @@
   }
 
   .season-filters{
-    border-top: 1px solid gray;
-    padding: 5px;
+    border-top: 2px solid gray;
+    /* border-top: 100%; */
+    /* padding: 5px; */
+  }
+
+  .Filter-header-header{
+    /* border-bottom: 1px solid gray; */
+    /* border-bottom-width: 80%; */
+    font-size: calc(4px + 1.5vmin);
+    padding:5px;
   }

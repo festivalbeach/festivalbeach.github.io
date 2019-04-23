@@ -146,19 +146,21 @@ class Filter extends Component {
                 <div className="header"> Filters </div>
                 <div class="grid-container">
                 <Container>
+                <div class = "Filter-header-header">Edibility</div>
                   <Row className="justify-content-md-center">
-                    <Col><div class="item1">Edible Fruit</div></Col>
+                    <Col><div class="item1">Fruit</div></Col>
                     <Col>
                       <div class="item4"><Switch onChange={this.handleSwitch2} checked={this.state.filterEdibleFruit} /></div>
                     </Col>
                   </Row>
                   <Row className="justify-content-md-center">
-                    <Col><div class="item1">Edible Seed</div></Col>
+                    <Col><div class="item1">Seed</div></Col>
                     <Col>
                       <div class="item4"><Switch onChange={this.handleSwitch3} checked={this.state.filterEdibleSeed} /></div>
                     </Col>
                   </Row>
                   <div class = "season-filters">
+                    <div class = "Filter-header-header">Harvest Season</div>
                     <Row className="justify-content-md-center">
                       <Col>Spring</Col>
                       <Col>
