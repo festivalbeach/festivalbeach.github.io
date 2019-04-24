@@ -18,8 +18,7 @@ class App extends Component {
         lat: 30.2535,
         lng: -97.7350
       },
-      zoom: 20,
-      inPark: false
+      zoom: 20
     }
   }
 
@@ -37,7 +36,7 @@ class App extends Component {
           //lat = 30.253;
           //lng = -97.735;
           if (lat >= 30.2525 && lat <= 30.2535 && lng >= -97.736 && lng <= -97.734) {
-            this.setState({center: {lat: lat, lng: lng}, zoom: 20, inPark: true});
+            this.setState({center: {lat: lat, lng: lng}, zoom: 20});
           }
         }
         this.setState({plantInfo: tabletop.sheets('Plant_Information').all().filter(point => point['Label'].length > 0)});
@@ -98,12 +97,10 @@ class App extends Component {
                     />
                   }
                 })}
-                { this.state.inPark &&
-                    <PersonMarker
-                      lat={this.state.center.lat}
-                      lng={this.state.center.lng}
-                    />
-                }
+                <PersonMarker
+                  lat={this.state.center.lat}
+                  lng={this.state.center.lng}
+                />
               </GoogleMapReact>
             </div>
           </header>
