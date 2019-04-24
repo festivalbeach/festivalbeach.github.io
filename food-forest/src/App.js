@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navbar from './Navbar.js'
 import PlantInfo from './PlantInfo.js'
+import PersonMarker from './PersonMarker.js'
 import Tabletop from 'tabletop';
 import GoogleMapReact from 'google-map-react';
 import { geolocated } from 'react-geolocated';
@@ -17,7 +18,8 @@ class App extends Component {
         lat: 30.2535,
         lng: -97.7350
       },
-      zoom: 20
+      zoom: 20,
+      inPark: false
     }
   }
 
@@ -32,8 +34,10 @@ class App extends Component {
         if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled && this.props.coords) {
           var lat = this.props.coords.latitude;
           var lng = this.props.coords.longitude;
+          //lat = 30.253;
+          //lng = -97.735;
           if (lat >= 30.2525 && lat <= 30.2535 && lng >= -97.736 && lng <= -97.734) {
-            this.setState({center: {lat: this.props.coords.latitude, lng: this.props.coords.longitude}, zoom: 20});
+            this.setState({center: {lat: lat, lng: lng}, zoom: 20, inPark: true});
           }
         }
         this.setState({plantInfo: tabletop.sheets('Plant_Information').all().filter(point => point['Label'].length > 0)});
@@ -49,10 +53,11 @@ class App extends Component {
     if (Object.keys(this.state.plantInfo).length === 0) {
       return (<p>Loading...</p>);
     }
-    else
+    else {
+      console.log(this.state.center.lat);
+      console.log(this.state.center.lng);
       var plantInfo = this.state.plantInfo;
       var plantColor = null;
-     
       return (
         <div className="App">
           <Navbar info={this.state.plantInfo} updateFilters={this.updateFilters.bind(this)}/>
@@ -70,13 +75,13 @@ class App extends Component {
                     west: -97.736
                   },
                   strictBounds: true
-                }} }}>
+                }}}}>
                 {Object.keys(plantInfo).map((index) => {
-                  if(plantInfo[index]['Toxicity (Rating: 1-4)'] != undefined){
-                    if(plantInfo[index]['Toxicity (Rating: 1-4)'] === "1 - Safe to eat. Enjoy!" ){
+                  if (plantInfo[index]['Toxicity (Rating: 1-4)'] != undefined){
+                    if (plantInfo[index]['Toxicity (Rating: 1-4)'] === "1 - Safe to eat. Enjoy!" ){
                       plantColor = "#93C054";
                     }
-                    else if(plantInfo[index]['Toxicity (Rating: 1-4)'] === "2 - May need some processing."){
+                    else if (plantInfo[index]['Toxicity (Rating: 1-4)'] === "2 - May need some processing."){
                       plantColor = "#F68D2E";
                     }
                     else {
@@ -93,11 +98,18 @@ class App extends Component {
                     />
                   }
                 })}
+                { this.state.inPark &&
+                    <PersonMarker
+                      lat={this.state.center.lat}
+                      lng={this.state.center.lng}
+                    />
+                }
               </GoogleMapReact>
             </div>
           </header>
         </div>
       );
+    }
   }
 }
 
