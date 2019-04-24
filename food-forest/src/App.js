@@ -15,8 +15,8 @@ class App extends Component {
       plantInfo: [],
       filtered: new Set(),
       center: {
-        lat: 30.2535,
-        lng: -97.7350
+        lat: 30.253,
+        lng: -97.735
       },
       zoom: 20
     }
@@ -33,8 +33,6 @@ class App extends Component {
         if (this.props.isGeolocationAvailable && this.props.isGeolocationEnabled && this.props.coords) {
           var lat = this.props.coords.latitude;
           var lng = this.props.coords.longitude;
-          //lat = 30.253;
-          //lng = -97.735;
           if (lat >= 30.2525 && lat <= 30.2535 && lng >= -97.736 && lng <= -97.734) {
             this.setState({center: {lat: lat, lng: lng}, zoom: 20});
           }
@@ -66,15 +64,7 @@ class App extends Component {
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
                 defaultCenter={this.state.center}
                 defaultZoom={this.state.zoom}
-                options={function (maps) { return { mapTypeId: "satellite", minZoom: 19, maxZoom: 20, restriction: {
-                  latLngBounds: {
-                    east: -97.734,
-                    north: 30.2535,
-                    south: 30.2525,
-                    west: -97.736
-                  },
-                  strictBounds: true
-                }}}}>
+                options={function (maps) { return { mapTypeId: "satellite", minZoom: 19, maxZoom: 20}}}>
                 {Object.keys(plantInfo).map((index) => {
                   if (plantInfo[index]['Toxicity (Rating: 1-4)'] != undefined){
                     if (plantInfo[index]['Toxicity (Rating: 1-4)'] === "1 - Safe to eat. Enjoy!" ){
@@ -97,10 +87,12 @@ class App extends Component {
                     />
                   }
                 })}
-                <PersonMarker
-                  lat={this.state.center.lat}
-                  lng={this.state.center.lng}
-                />
+                {this.props.coords != null &&
+                  <PersonMarker
+                    lat={this.props.coords.latitude}
+                    lng={this.props.coords.longitude}
+                  />
+                }
               </GoogleMapReact>
             </div>
           </header>
