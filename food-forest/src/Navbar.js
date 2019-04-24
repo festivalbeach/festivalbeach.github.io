@@ -38,7 +38,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-          <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4B453F'}}>
+          <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4B453F', height: '55px'}}>
           <NavbarBrand href="/">
             <Image src= {logo} alt="Logo" style={{width:200}}fluid />
           </NavbarBrand>
