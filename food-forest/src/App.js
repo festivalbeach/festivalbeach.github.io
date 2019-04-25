@@ -114,5 +114,6 @@ export default geolocated({
   positionOptions: {
     enableHighAccuracy: false,
   },
+  watchPosition: true,
   userDecisionTimeout: 5000,
 })(App);
