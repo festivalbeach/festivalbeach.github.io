@@ -59,7 +59,7 @@ class App extends Component {
         <div className="App">
           <Navbar info={this.state.plantInfo} updateFilters={this.updateFilters.bind(this)}/>
           <header className="App-header">
-            <div id="map" style={{width: '100%', height: '90vh'}}>
+            <div id="map" style={{width: '100%', height: '100vh'}}>
               <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
                 defaultCenter={this.state.center}
