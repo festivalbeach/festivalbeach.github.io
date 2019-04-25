@@ -25,7 +25,7 @@ class PlantInfo extends React.Component {
         <icon >
           <div style={{color: 'white', size: '5em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
         </icon>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <Modal scrollable isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.plant}</ModalHeader>
           <ModalBody>
               Name: {this.props.plantInfoProp['Label']} <br />
@@ -33,18 +33,16 @@ class PlantInfo extends React.Component {
               Family: {this.props.plantInfoProp['Family']} <br />
               Cousin: {this.props.plantInfoProp['Cousin']} <br />
               Species: {this.props.plantInfoProp['Species']} <br />
-              {/* Strata: <br />
-              Forest Fruit Type: {} <br />
-              Biological Fruit Type: {} <br />
-              Culinary Fruit Type: {} <br />
-              Fruit Color: {} <br />
-              Fruit Edibility: {} <br />
-              Bloom Color: {} <br />
-              Flower Edibility: {} <br />
-              Leaf Edibility: {} <br />
-              Bark Edibility: {} <br />
-              Seed Edibility: {} <br />
-              Overall Toxicity: {} <br /> */}
+              Strata: {this.props.plantInfoProp['Species']} <br />
+              Fruit Type: {this.props.plantInfoProp['Fruit Type']} <br />
+              Fruit Edibility: {this.props.plantInfoProp['Edible (fruit) Y/N']} <br />
+              Bloom Color: {this.props.plantInfoProp['Bloom Color']} <br />
+              Flower Edibility: {this.props.plantInfoProp['Edible Flower  Y/N']} <br />
+              Leaf Edibility: {this.props.plantInfoProp['Edible Leaf']} <br />
+              Bark Edibility: {this.props.plantInfoProp['Edible Bark Y/N']} <br />
+              Seed Edibility: {this.props.plantInfoProp['Edible Seed']} <br />
+              Overall Toxicity Rating (1-4): {this.props.plantInfoProp['Toxicity (Rating: 1-4)']} <br />
+              Water Use: {this.props.plantInfoProp['Water Use']} <br />
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
