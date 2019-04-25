@@ -23,7 +23,7 @@ class PlantInfo extends React.Component {
       <div>
         <div className="icon" ><i class="material-icons" style={{color:this.props.color}}onClick={this.toggle}>local_florist</i></div>
         <icon >
-          <div style={{color: 'white', size: '5em', position: 'relative', right: '5px'}}>{this.props.plant}</div>
+          <div style={{color: 'white', fontSize: '.8em', position: 'relative', right: '2px'}}>{this.props.plant}</div>
         </icon>
         <Modal scrollable isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>{this.props.plant}</ModalHeader>
