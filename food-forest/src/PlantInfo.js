@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import styled from 'styled-components';
 
 class PlantInfo extends React.Component {
   constructor(props) {
@@ -21,8 +20,8 @@ class PlantInfo extends React.Component {
    render() {
     return (
       <div>
-        <div className="icon" ><i class="material-icons" style={{color:this.props.color}}onClick={this.toggle}>local_florist</i></div>
-        <icon >
+        <div className="icon" ><i className="material-icons" style={{color:this.props.color}}onClick={this.toggle}>local_florist</i></div>
+        <icon>
           <div style={{color: 'white', fontSize: '.8em', position: 'relative', right: '2px'}}>{this.props.plant}</div>
         </icon>
         <Modal scrollable isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

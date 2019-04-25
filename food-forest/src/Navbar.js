@@ -13,11 +13,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavLink
+} from 'reactstrap';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -40,20 +37,20 @@ export default class Example extends React.Component {
       <div>
           <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4B453F'}}>
           <NavbarBrand href="/">
-            <Image src= {logo} alt="Logo" style={{width:200}}fluid />
+            <Image src= {logo} alt="Logo" style={{width:200}} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <Nav className= "Navbar-content" navbar>
                 <NavItem>
-                  <Filter info={this.props.info} updateFilters={this.props.updateFilters} style={{color: 'white'}} fluid/>
+                  <Filter info={this.props.info} updateFilters={this.props.updateFilters} style={{color: 'white'}} />
                 </NavItem>
                 <NavItem>
-                  <NavLink href="https://festivalbeach.org/" style={{color: 'white'}} fluid>Food Forest Website</NavLink>
+                  <NavLink href="https://festivalbeach.org/" style={{color: 'white'}} >Festival Beach Website</NavLink>
                 </NavItem>
                 <NavItem>
-                  <Searchbar fluid/>
+                  <Searchbar/>
                 </NavItem>
               </Nav>
             </Nav>

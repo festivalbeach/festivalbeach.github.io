@@ -74,7 +74,7 @@ class App extends Component {
                   strictBounds: true
                 }}}}>
                 {Object.keys(plantInfo).map((index) => {
-                  if (plantInfo[index]['Toxicity (Rating: 1-4)'] != undefined){
+                  if (plantInfo[index]['Toxicity (Rating: 1-4)'] !== undefined){
                     if (plantInfo[index]['Toxicity (Rating: 1-4)'] === "1 - Safe to eat. Enjoy!" ){
                       plantColor = "#93C054";
                     }
@@ -85,7 +85,7 @@ class App extends Component {
                       plantColor = "#EE2737";
                     }
                   }
-                  if (!this.state.filtered.has(plantInfo[index]['Label']) && plantInfo[index]['Latitude'] != undefined && plantInfo[index]['Longitude'] != undefined) {
+                  if (!this.state.filtered.has(plantInfo[index]['Label']) && plantInfo[index]['Latitude'] !== undefined && plantInfo[index]['Longitude'] !== undefined) {
                     return <PlantInfo
                       plant={plantInfo[index]['Label']}
                       lat={plantInfo[index]['Latitude']}
@@ -95,7 +95,7 @@ class App extends Component {
                     />
                   }
                 })}
-                {this.props.coords != null &&
+                {this.props.coords !== null &&
                   <PersonMarker
                     lat={this.props.coords.latitude}
                     lng={this.props.coords.longitude}
