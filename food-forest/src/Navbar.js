@@ -50,7 +50,7 @@ export default class Example extends React.Component {
                   <NavLink href="https://festivalbeach.org/" style={{color: 'white'}} >Festival Beach Website</NavLink>
                 </NavItem>
                 <NavItem>
-                  <Searchbar/>
+                  <Searchbar info={this.props.info} updateFilters={this.props.updateFilters}/>
                 </NavItem>
               </Nav>
             </Nav>
