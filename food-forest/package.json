@@ -2,8 +2,10 @@
   "name": "food-forest",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://festivalbeach.github.io",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "gh-pages": "^2.0.1",
     "google-map-react": "^1.1.4",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
@@ -20,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -b master",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
