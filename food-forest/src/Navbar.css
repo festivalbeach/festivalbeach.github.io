@@ -1,5 +1,6 @@
-.Navbar-content{
+.right{
+    /* display:flex; */
     align-items: center;
-    float: right;
+    justify-content: flex-end;
 }
 

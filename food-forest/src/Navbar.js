@@ -4,7 +4,7 @@ import Searchbar from './Searchbar.js';
 import Image from 'react-bootstrap/Image';
 import logo from './foodforest_icon.PNG';
 import './Navbar.css';
-
+import { Container, Row, Col } from 'reactstrap';
 
 import {
   Collapse,
@@ -35,24 +35,28 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-          <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4B453F'}}>
-          <NavbarBrand href="/">
-            <Image src= {logo} alt="Logo" style={{width:200}} />
-          </NavbarBrand>
+        <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4B453F'}}>
+            <NavbarBrand href="/">
+              <Image src= {logo} alt="Logo" style={{width:150}} />
+            </NavbarBrand>
+            <NavLink href="https://festivalbeach.org/" style={{color: 'white'}} >Festival Beach Website</NavLink>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <Nav className= "Navbar-content" navbar>
-                <NavItem>
-                  <Filter info={this.props.info} updateFilters={this.props.updateFilters} style={{color: 'white'}} />
-                </NavItem>
-                <NavItem>
-                  <NavLink href="https://festivalbeach.org/" style={{color: 'white'}} >Festival Beach Website</NavLink>
-                </NavItem>
-                <NavItem>
-                  <Searchbar info={this.props.info} updateFilters={this.props.updateFilters}/>
-                </NavItem>
-              </Nav>
+            <Container>
+                <Row className="right">
+                  <Col xs={8}>
+                    <NavItem>
+                      <Searchbar info={this.props.info} updateFilters={this.props.updateFilters}/>
+                    </NavItem>
+                  </Col>
+                  <Col xs={2}>
+                    <NavItem>
+                      <Filter info={this.props.info} updateFilters={this.props.updateFilters} style={{color: 'white'}} />
+                    </NavItem>
+                  </Col>
+                </Row>
+              </Container>
             </Nav>
           </Collapse>
         </Navbar>
