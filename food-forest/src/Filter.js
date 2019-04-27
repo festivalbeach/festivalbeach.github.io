@@ -13,10 +13,10 @@ class Filter extends Component {
     this.state = {
       filterEdibleFruit: false,
       filterEdibleSeed: false,
-      filterSummer: true,
-      filterWinter: true,
-      filterFall: true,
-      filterSpring: true
+      filterSummer: false,
+      filterWinter: false,
+      filterFall: false,
+      filterSpring: false
     }
     this.handleSwitch2 = this.handleSwitch2.bind(this)
     this.handleSwitch3 = this.handleSwitch3.bind(this)
@@ -51,79 +51,90 @@ class Filter extends Component {
     }
   }
   filterSeason(oneFilter, entry, season){
-    if(season !== entry['Harvest-able Season']){
+    if(season !== entry['Harvest Start'] && season !== entry['Harvest End']){
       oneFilter.add(entry['Label'])
     }
   }
   intersection(filtered, oneFilter){
     return new Set([...filtered].filter(x => oneFilter.has(x)))
   }
+  union(oneFilter, twoFilter){
+    return new Set([...oneFilter, ...twoFilter])
+  }
 
   refilter() {
     var filtered = new Set()
     var fruit = new Set()
     var seed = new Set()
-    // TODO remove comments after Harvest-able season has been added to spreadsheet
-    // var spring = new Set()
-    // var summer = new Set()
-    // var fall = new Set()
-    // var winter = new Set()
+    var spring = new Set()
+    var summer = new Set()
+    var fall = new Set()
+    var winter = new Set()
     var info = this.props.info
-    
+
     Object.keys(info).map((key) => {
       //at least one filter is true or switch is on
-      var filter = this.state.filterEdibleFruit || this.state.filterEdibleSeed
-      var allSeasons = this.state.filterSpring && this.state.filterSummer && this.state.filterFall && this.state.filterWinter
-      console.log(!allSeasons || filter)
-      if (!allSeasons || filter){
+      //if one of the edible or at least one of the seasons
+      if (this.state.filterEdibleFruit || this.state.filterEdibleSeed || this.state.filterSpring || this.state.filterSummer || this.state.filterFall || this.state.filterWinter){
         filtered.add(info[key]['Label'])
-        if(filter){
-          if(this.state.filterEdibleFruit){
-            this.filterColumn(fruit, info[key], 'Edible (fruit) Y/N')
-          }
-          if(this.state.filterEdibleSeed){
-            this.filterColumn(seed, info[key], 'Edible Seed')
-          }
-          // TODO remove comments after Harvest-able season has been added to spreadsheet
-          // if(this.state.filterSpring){
-          //   this.filterColumn(spring, info[key])
-          // }
-          // if(this.state.filterSummer){
-          //   this.filterColumn(summer, info[key])
-          // }
-          // if(this.state.filterFall){
-          //   this.filterColumn(fall, info[key])
-          // }
-          // if(this.state.filterWinter){
-          //   this.filterColumn(winter, info[key])
-          // }
-
-          //intersection of all sets that are on
-          if(this.state.filterEdibleFruit){
-            filtered = this.intersection(filtered, fruit)
-          }
-          if(this.state.filterEdibleSeed){
-            filtered = this.intersection(filtered, seed)
-          }
-          // TODO remove comments after Harvest-able season has been added to spreadsheet
-          // if(this.state.filterSpring){
-          //   filtered = this.intersection(filtered, spring)
-          // }
-          // if(this.state.filterSummer){
-          //   filtered = this.intersection(filtered, summer)
-          // }
-          // if(this.state.filterFall){
-          //   filtered = this.intersection(filtered, fall)
-          // }
-          // if(this.state.filterWinter){
-          //   filtered = this.intersection(filtered, winter)
-          // }
+        if(this.state.filterEdibleFruit){
+          this.filterColumn(fruit, info[key], 'Edible (fruit) Y/N')
+        }
+        if(this.state.filterEdibleSeed){
+          this.filterColumn(seed, info[key], 'Edible Seed')
+        }
+        if(this.state.filterSpring){
+          this.filterSeason(spring, info[key], 'Spring')
+        }
+        if(this.state.filterSummer){
+          this.filterSeason(summer, info[key], 'Summer')
+        }
+        if(this.state.filterFall){
+          this.filterSeason(fall, info[key], 'Winter')
+        }
+        if(this.state.filterWinter){
+          this.filterSeason(winter, info[key], 'Fall')
         }
       }
     })
-
-    this.props.updateFilters(filtered)
+  //intersection of all sets that are on
+  // if(this.state.filterEdibleFruit){
+  //   filtered = this.intersection(filtered, fruit)
+  // }
+  // if(this.state.filterEdibleSeed){
+  //   filtered = this.intersection(filtered, seed)
+  // }
+  var edible = new Set()
+  if(this.state.filterEdibleFruit && this.state.filterEdibleSeed){
+    edible = this.union(fruit, seed)
   }
+  else if(this.state.filterEdibleFruit){
+    edible = fruit
+  }
+  else if(this.state.filterEdibleSeed){
+    edible = seed
+  }
+  if(this.state.filterSpring){
+    filtered = this.intersection(filtered, spring)
+  }
+  if(this.state.filterSummer){
+    filtered = this.intersection(filtered, summer)
+  }
+  if(this.state.filterFall){
+    filtered = this.intersection(filtered, fall)
+  }
+  if(this.state.filterWinter){
+    filtered = this.intersection(filtered, winter)
+  }
+  if(this.state.filterSpring || this.state.filterSummer || this.state.filterFall || this.state.filterWinter && edible.size != 0){
+    filtered = this.union(filtered, edible)
+  }
+  else{
+    filtered = edible
+  }
+  
+  this.props.updateFilters(filtered)
+}
 
 
   /* Loads plant information and coordinates from a google spreadsheet.
