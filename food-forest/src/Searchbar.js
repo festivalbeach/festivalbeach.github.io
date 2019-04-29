@@ -22,10 +22,10 @@ class Searchbar extends Component {
                 }
             })
         }
+
         console.log('filter size: ' + filtered.size)
-        if (filtered.size != 0){
-            this.props.updateFilters(filtered)
-        }
+        this.props.updateFilters(filtered)
+        
     }
     render() {
       return (
