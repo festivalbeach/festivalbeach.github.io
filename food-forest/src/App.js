@@ -15,8 +15,8 @@ class App extends Component {
       plantInfo: [],
       filtered: new Set(),
       center: {
-        lat: 30.2535,
-        lng: -97.7350
+        lat: 30.2532,
+        lng: -97.7353
       },
       zoom: 20
     }
@@ -58,7 +58,7 @@ class App extends Component {
       return (
         <div className="App">
           <Navbar info={this.state.plantInfo} updateFilters={this.updateFilters.bind(this)}/>
-          <header className="App-header">
+          <header className="App-header" style={{minHeight: '0'}}>
             <div id="map" style={{width: '100%', height: '100vh'}}>
               <GoogleMapReact
                 boostrapURLKeys={{key: 'AIzaSyBgw60HMTK35v3C-sRyLliDj6tNV-m2zlI'}}
