@@ -52,8 +52,11 @@ class PlantInfo extends React.Component {
               Seed Edibility: {this.displayTF(this.props.plantInfoProp['Edible Seed'])} <br />
               Overall Toxicity Rating (1-4): {this.props.plantInfoProp['Toxicity (Rating: 1-4)']} <br />
               Fruit Type: {this.props.plantInfoProp['Fruit Type']} <br />
+              Fruit Size: {this.props.plantInfoProp['Fruit Size']} <br />
               Bloom Color: {this.props.plantInfoProp['Bloom Color']} <br />
               Water Use: {this.props.plantInfoProp['Water Use']} <br />
+              Planting Year: {this.props.plantInfoProp['Planting Year']}<br />
+              Source: {this.props.plantInfoProp['Source']}
           </ModalBody>
           <ModalFooter style={{backgroundColor: this.props.color}}>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
