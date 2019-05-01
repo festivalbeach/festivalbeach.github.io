@@ -1,16 +1,17 @@
 {
-  "main.css": "/static/css/main.42cb75f2.chunk.css",
-  "main.js": "/static/js/main.ad44e296.chunk.js",
-  "main.js.map": "/static/js/main.ad44e296.chunk.js.map",
+  "main.css": "/static/css/main.8e123efd.chunk.css",
+  "main.js": "/static/js/main.1a9de445.chunk.js",
+  "main.js.map": "/static/js/main.1a9de445.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
   "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
   "static/css/2.2663c0ab.chunk.css": "/static/css/2.2663c0ab.chunk.css",
-  "static/js/2.ed555617.chunk.js": "/static/js/2.ed555617.chunk.js",
-  "static/js/2.ed555617.chunk.js.map": "/static/js/2.ed555617.chunk.js.map",
+  "static/js/2.674990e1.chunk.js": "/static/js/2.674990e1.chunk.js",
+  "static/js/2.674990e1.chunk.js.map": "/static/js/2.674990e1.chunk.js.map",
   "index.html": "/index.html",
-  "precache-manifest.31ca4b9ac4ba7a413cca3248093fdda6.js": "/precache-manifest.31ca4b9ac4ba7a413cca3248093fdda6.js",
+  "precache-manifest.4ca0dbbadc29268fe15edb7bd14ba905.js": "/precache-manifest.4ca0dbbadc29268fe15edb7bd14ba905.js",
   "service-worker.js": "/service-worker.js",
   "static/css/2.2663c0ab.chunk.css.map": "/static/css/2.2663c0ab.chunk.css.map",
-  "static/css/main.42cb75f2.chunk.css.map": "/static/css/main.42cb75f2.chunk.css.map",
-  "static/media/foodforest_icon.PNG": "/static/media/foodforest_icon.3687f470.PNG"
+  "static/css/main.8e123efd.chunk.css.map": "/static/css/main.8e123efd.chunk.css.map",
+  "static/media/foodforest_icon_logo_resize.PNG": "/static/media/foodforest_icon_logo_resize.b205043f.PNG",
+  "static/media/foodforest_text_logo.PNG": "/static/media/foodforest_text_logo.a7c1a6a2.PNG"
 }
