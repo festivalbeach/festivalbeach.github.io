@@ -15,12 +15,12 @@
   
   /* On mouse-over */
   .btn:hover {
-    background: #433E38;
+    background: #473e3a;
   }
   
   
   .Filter-header {
-    background-color: #4B453F;
+    background-color: #4f4541;
     /*min-height: 100vh;*/
     display: flex;
     flex-direction: column;

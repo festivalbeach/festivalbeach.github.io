@@ -2,7 +2,8 @@ import React from 'react';
 import Filter from './Filter.js';
 import Searchbar from './Searchbar.js';
 import Image from 'react-bootstrap/Image';
-import logo from './foodforest_icon.PNG';
+import Iconlogo from './foodforest_icon_logo_resize.PNG';
+import Textlogo from './foodforest_text_logo.PNG';
 import './Navbar.css';
 import { Container, Row, Col } from 'reactstrap';
 
@@ -35,11 +36,13 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4B453F'}}>
+        <Navbar color="faded" light expand="sm" style={{backgroundColor: '#4f4541'}}>
             <NavbarBrand href="/">
-              <Image src= {logo} alt="Logo" style={{width:150}} />
+              <Image src= {Iconlogo} alt="Iconlogo" style={{width:50}} />
             </NavbarBrand>
-            <NavLink href="https://festivalbeach.org/" style={{color: 'white'}} >Festival Beach Website</NavLink>
+            <NavbarBrand href="https://festivalbeach.org/">
+              <Image src= {Textlogo} alt="Textlogo" style={{width:150}} />
+            </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

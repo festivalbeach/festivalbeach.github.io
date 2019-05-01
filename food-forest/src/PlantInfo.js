@@ -36,7 +36,7 @@ class PlantInfo extends React.Component {
         </icon>
         <Modal scrollable isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} centered = "true">
           <ModalHeader 
-            style={{backgroundColor: ((this.props.plantInfoProp['Bloom Color'] == "" || this.props.plantInfoProp['Bloom Color'] == "White") ? "#A4D65E" : this.props.plantInfoProp['Bloom Color'])}} 
+            style={{backgroundColor: this.props.color}} 
             toggle={this.toggle}>
               <font size="5">{this.props.plant}</font><br />
               <font size="3">{this.props.plantInfoProp['Family']} {this.props.plantInfoProp['Genus']} {this.props.plantInfoProp['Species']}</font>
@@ -55,7 +55,7 @@ class PlantInfo extends React.Component {
               Bloom Color: {this.props.plantInfoProp['Bloom Color']} <br />
               Water Use: {this.props.plantInfoProp['Water Use']} <br />
           </ModalBody>
-          <ModalFooter style={{backgroundColor: ((this.props.plantInfoProp['Bloom Color'] == "" || this.props.plantInfoProp['Bloom Color'] == "White") ? "#A4D65E" : this.props.plantInfoProp['Bloom Color'])}}>
+          <ModalFooter style={{backgroundColor: this.props.color}}>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
