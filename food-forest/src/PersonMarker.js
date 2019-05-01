@@ -11,7 +11,7 @@ class PersonMarker extends React.Component {
       <div>
         <div className="icon" ><i className="material-icons" style={{color: '#EE2737'}}>accessibility</i></div>
         <icon >
-          <div style={{color: 'white', size: '5em', position: 'relative'}}>YOU ARE HERE</div>
+          <div style={{color: 'white', size: '5em', position: 'relative'}}>You</div>
         </icon>
       </div>
     );
