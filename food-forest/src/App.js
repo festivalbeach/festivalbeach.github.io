@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './Navbar.js'
 import PlantInfo from './PlantInfo.js'
 import PersonMarker from './PersonMarker.js'
+import StartMarker from './StartMarker.js'
 import Tabletop from 'tabletop';
 import GoogleMapReact from 'google-map-react';
 import { geolocated } from 'react-geolocated';
@@ -101,6 +102,11 @@ class App extends Component {
                     lng={this.props.coords.longitude}
                   />
                 }
+                {/* 30.253122, -97.735639 */}
+                <StartMarker
+                  lat={30.25314}
+                  lng={-97.735639}
+                />
               </GoogleMapReact>
             </div>
           </header>
